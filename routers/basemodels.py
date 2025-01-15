@@ -14,6 +14,17 @@ class UserDetails(BaseModel):
     bank_account: str
     bank_ifsc : str
 
+class StartUpDetails(BaseModel):
+    ext_id: str
+    name: str
+    tan: str
+    reg_no: str
+    address: str
+    description: str
+    logo_url: str
+    incoperate_cert: str
+    pitch_deck: str
+
 
 
 
