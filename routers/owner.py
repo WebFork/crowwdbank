@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from bases import OwnerDetails
+from routers.basemodels import OwnerDetails
 from database import owner_collection
 
 router = APIRouter(prefix="/owner")

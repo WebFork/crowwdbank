@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import invester
+from routers import owner
 
 
 
@@ -13,8 +13,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"])
 
-app.include_router(invester.router)
+app.include_router(owner.router)
 
 @app.get('/root')
 async def get_root():
-    
+    return {"welcome to crowwd bank"}
+
+@app.get("/healthcheck")
+async def check():
+    return True
