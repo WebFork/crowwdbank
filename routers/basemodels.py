@@ -1,5 +1,7 @@
 from pydantic import BaseModel, EmailStr
 
+
+
 class ClerkDetails(BaseModel):
     ext_id: str
     first: str
@@ -19,6 +21,7 @@ class UserDetails(BaseModel):
 
 class StartUpDetails(BaseModel):
     ext_id: str
+    project_id: str
     name: str
     category: str
     target: float
@@ -31,6 +34,11 @@ class StartUpDetails(BaseModel):
     incoperate_cert: str
     pitch_deck: str
     status: str = "Approved"
+    valuation: float
+
+
+
+
 
 
 
