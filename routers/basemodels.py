@@ -6,3 +6,4 @@ class OwnerDetails(BaseModel):
     last: str
     email: EmailStr  
     pic_url: str
+    onboarding_complete: bool = False

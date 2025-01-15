@@ -22,3 +22,5 @@ async def get_root():
 @app.get("/healthcheck")
 async def check():
     return True
+
+
