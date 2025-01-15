@@ -8,6 +8,9 @@ class ClerkDetails(BaseModel):
     pic_url: str
     onboarding_complete: bool = False
 
+class Check(BaseModel):
+    ext_id: str
+
 class UserDetails(BaseModel):
     ext_id: str
     pan: str
@@ -17,6 +20,9 @@ class UserDetails(BaseModel):
 class StartUpDetails(BaseModel):
     ext_id: str
     name: str
+    category: str
+    target: float
+    raised: float = 0
     tan: str
     reg_no: str
     address: str
@@ -24,7 +30,7 @@ class StartUpDetails(BaseModel):
     logo_url: str
     incoperate_cert: str
     pitch_deck: str
-    status: str = "Pending"
+    status: str = "Approved"
 
 
 

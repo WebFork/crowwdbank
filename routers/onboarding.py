@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, status, Form
-from routers.basemodels import UserDetails
+from routers.basemodels import UserDetails, Check
 from database import owner_collection
 
 router = APIRouter(prefix="/onboarding")
@@ -30,8 +30,8 @@ async def user_create(details: UserDetails):
         )
     
 @router.post('/complete')
-async def complete(ext_id: str = Form(...)):
-    condition = {"ext_id": ext_id}
+async def complete(details: Check):
+    condition = {"ext_id": details.ext_id}
     result = owner_collection.find_one(condition)
     if result is None:
         raise HTTPException(
