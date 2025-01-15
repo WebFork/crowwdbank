@@ -12,7 +12,7 @@ async def fetch_projects():
         list_project.append(project)
     return {"projects": list_project}
 
-@router.get("/fetch_with_id/")
+@router.get("/with_id")
 async def fetch_project_id(project_id: str):
     try:
         project = project_collection.find_one({"project_id": project_id})
