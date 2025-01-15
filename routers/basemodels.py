@@ -2,6 +2,7 @@ from pydantic import BaseModel, EmailStr
 
 
 
+
 class ClerkDetails(BaseModel):
     ext_id: str
     first: str
@@ -45,6 +46,16 @@ class RAGDetails(BaseModel):
     project_id: str
     prompt: str
     knowledge_base: str
+
+class TransactDetails(BaseModel):
+    ext_id: str
+    project_id: str
+    amount: float
+    transaction_id: str
+    status: str
+
+
+
 
 
 

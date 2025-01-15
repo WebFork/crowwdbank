@@ -10,5 +10,6 @@ db = mongo_client["Crowwd"]
 owner_collection = db["owner_collection"]
 project_collection = db["project_collection"]
 chat_collection = db["chat_collection"]
+transaction_collection = db["transaction_collection"]
 
 

@@ -11,7 +11,7 @@ mongodb_connection_string = os.getenv("MONGODB_CONNECTION")
 router = APIRouter(prefix="/responder")
 
 
-@router.post("/getrespond")
+@router.post("/getresponse")
 async def get_respond(data:RAGDetails):
     chat_history = MongoDBChatMessageHistory(
     session_id=data.ext_id,
@@ -19,6 +19,6 @@ async def get_respond(data:RAGDetails):
     database_name="Crowwd",
     collection_name="chat_collection"
     )
-    return get_response(data.prompt, chat_history, data.knowledge_base)
+    return {"response":get_response(data.prompt, chat_history, data.knowledge_base)}
 
 
