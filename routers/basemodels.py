@@ -35,6 +35,16 @@ class StartUpDetails(BaseModel):
     pitch_deck: str
     status: str = "Approved"
     valuation: float
+    minInvestment: float = 250
+    maxInvestment: float = 0
+
+    class Config:
+        arbitrary_types_allowed = True
+
+class RAGDetails(BaseModel):
+    ext_id: str
+    prompt: str
+
 
 
 

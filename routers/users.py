@@ -7,9 +7,10 @@ router = APIRouter(prefix="/user")
 @router.post("/register_startup")
 async def register_startup(details:StartUpDetails):
     try:
-        owner_data = details.model_dump()
-        print(owner_data)
-        project_collection.insert_one(owner_data)
+        startup_data = details.model_dump()
+        startup_data["maxInvestment"] = startup_data.target - startup_data.raised
+        print(startup_data)
+        project_collection.insert_one(startup_data)
         return True
     except Exception as e:
         print(e)
