@@ -28,7 +28,7 @@ model = ChatGoogleGenerativeAI(
 )
 
 # System message setup
-system_message = SystemMessage(content="")
+system_message = SystemMessage(content="you are a bot")
 
 # Function to process a knowledge base string and create a retriever
 def create_retriever_from_string(knowledge_base: str):
