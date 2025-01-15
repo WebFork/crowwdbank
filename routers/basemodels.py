@@ -24,8 +24,8 @@ class StartUpDetails(BaseModel):
     project_id: str
     name: str
     category: str
-    target: float
-    raised: float = 0
+    target: str
+    raised: str = 0
     tan: str
     reg_no: str
     address: str
@@ -34,9 +34,9 @@ class StartUpDetails(BaseModel):
     incoperate_cert: str
     pitch_deck: str
     status: str = "Approved"
-    valuation: float
-    minInvestment: float = 250
-    maxInvestment: float = 0
+    valuation: str
+    minInvestment: str = 250
+    maxInvestment: str = 0
 
 
 
