@@ -38,12 +38,12 @@ class StartUpDetails(BaseModel):
     minInvestment: float = 250
     maxInvestment: float = 0
 
-    class Config:
-        arbitrary_types_allowed = True
+
 
 class RAGDetails(BaseModel):
     ext_id: str
     prompt: str
+    knowledge_base: str
 
 
 

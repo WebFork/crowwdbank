@@ -7,3 +7,4 @@ email-validator
 python-multipart
 langchain_google_genai
 langchain_mongodb
+faiss-cpu
