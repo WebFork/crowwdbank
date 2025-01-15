@@ -15,7 +15,7 @@ app.add_middleware(
 
 app.include_router(owner.router)
 
-@app.get('/root')
+@app.get('/')
 async def get_root():
     return {"welcome to crowwd bank"}
 
