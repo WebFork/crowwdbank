@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import webhook
+from routers import webhook, onboarding
 
 
 
@@ -16,6 +16,7 @@ app.add_middleware(
 
 
 app.include_router(webhook.router)
+app.include_router(onboarding.router)
 
 @app.get('/')
 async def get_root():
