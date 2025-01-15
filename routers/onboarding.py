@@ -38,8 +38,9 @@ async def complete(ext_id: str = Form(...)):
                 status_code=status.HTTP_404_NOT_FOUND,
                 detail="User not found"
             )
-    
     return {'onboarding_complete': result.get("onboarding_complete")}
+
+
 
     
 
