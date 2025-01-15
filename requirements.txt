@@ -8,3 +8,4 @@ python-multipart
 langchain_google_genai
 langchain_mongodb
 faiss-cpu
+langchain_community
