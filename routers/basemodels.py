@@ -1,6 +1,6 @@
 from pydantic import BaseModel, EmailStr
 
-class OwnerDetails(BaseModel):
+class UserDetails(BaseModel):
     ext_id: str
     first: str
     last: str
