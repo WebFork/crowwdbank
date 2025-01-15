@@ -11,7 +11,11 @@ app.add_middleware(
     allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"])
+    allow_headers=["x-api-key"])
+
+app.add_middleware(
+    
+)
 
 app.include_router(owner.router)
 
