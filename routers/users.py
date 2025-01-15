@@ -15,3 +15,4 @@ async def register_startup(details:StartUpDetails):
         print(e)
         print("User details are not entered succesfully")
         return False
+    

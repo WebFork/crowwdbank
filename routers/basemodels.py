@@ -24,6 +24,7 @@ class StartUpDetails(BaseModel):
     logo_url: str
     incoperate_cert: str
     pitch_deck: str
+    status: str = "Pending"
 
 
 
