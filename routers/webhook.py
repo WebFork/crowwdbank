@@ -13,3 +13,4 @@ async def clerk(details:UserDetails):
     except Exception as e:
         print("User details are not entered succesfully")
         return False
+    

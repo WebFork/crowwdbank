@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import owner
+from routers import webhook
 
 
 
@@ -11,13 +11,11 @@ app.add_middleware(
     allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["x-api-key"])
+    allow_headers=["*"])
 
-app.add_middleware(
-    
-)
 
-app.include_router(owner.router)
+
+app.include_router(webhook.router)
 
 @app.get('/')
 async def get_root():
