@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-connection_string = os.getenv("mongo_db")
+connection_string = os.getenv("MONGODB_CONNECTION")
 
 mongo_client = MongoClient(connection_string)
 db = mongo_client["Crowwd"]
