@@ -21,6 +21,18 @@ async def fetch_project_id(project_id: str):
     except Exception as e:
         return {"error": str(e)}
     
+@router.get("/with_user_id")
+async def fetch_project_user_id(ext_id: str):
+    try:
+        project = project_collection.find_one({"ext_id": ext_id})
+        project.pop('_id', None)
+        return {"project": project}
+    except Exception as e:
+        return {"error": str(e)}
+    
+
+
+    
 
 
 

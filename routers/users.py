@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from routers.basemodels import StartUpDetails
-from database import project_collection
+from database import project_collection, transaction_collection
 
 router = APIRouter(prefix="/user")
 
@@ -24,5 +24,27 @@ async def register_startup(details: StartUpDetails):
         # Log the error
         print("Error:", e)
         return {"success": False, "message": "Failed to register startup"}
+    
+@router.post("/distribute")
+async def distribute_funds(details: StartUpDetails):
+    try:
+        # Log the incoming request payload
+        print("Incoming payload:", details.model_dump())
+
+        # Process the data
+        startup_data = details.model_dump()
+        investors = transaction_collection.find({"project_id": startup_data["project_id"]})
+
+        for investor in investors:
+            print(investor)
+            
+
+
+        # Insert into the database
+        project_collection.insert_one(startup_data)
+        return {"success": True, "message": "Startup registered successfully"}
+    except Exception as e:
+        # Log the error
+        print("Error:", e)
 
     
