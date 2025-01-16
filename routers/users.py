@@ -35,14 +35,18 @@ async def distribute_funds(details: DistributionDetails):
         # Process the data
         dist_data = details.model_dump()
         investors = transaction_collection.find({"project_id": dist_data["project_id"]})
-        distribution_details = {"email": [], "profit": []}
-        # raised = project_collection.find_one({"project_id": dist_data["project_id"]})["raised"]
-
+        distribution_details = {"emails": [], "profit": [], "first":[], "startup_name": []}
+        raised = project_collection.find_one({"project_id": dist_data["project_id"]})["raised"]
+        startup_name = project_collection.find_one({"project_id": dist_data["project_id"]})["name"]
         for investor in investors:
             invested = investor["amount"]
-            profit = calculate_investment_details(invested, dist_data["raised"])
+            profit = calculate_investment_details(invested, raised)
+            print(profit)
             email = owner_collection.find_one({"ext_id": investor["ext_id"]})["email"]
-            distribution_details["email"].append(email)
+            firstname = owner_collection.find_one({"ext_id": investor["ext_id"]})["first"]
+            distribution_details["emails"].append(email)
+            distribution_details["startup_name"].append(startup_name)
+            distribution_details["first"].append(firstname)
             distribution_details["profit"].append(profit)
         return distribution_details
 
@@ -50,4 +54,8 @@ async def distribute_funds(details: DistributionDetails):
         # Log the error
         print("Error:", e)
         return {"success": False, "message": "Failed to distribute funds"}
+    
+
+    
+
     

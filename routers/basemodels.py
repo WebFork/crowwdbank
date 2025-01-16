@@ -57,7 +57,7 @@ class TransactDetails(BaseModel):
 class DistributionDetails(BaseModel):
     project_id: str
     profit: float
-    raised: float
+
 
 
 
