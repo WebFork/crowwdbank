@@ -54,6 +54,11 @@ class TransactDetails(BaseModel):
     transaction_id: str
     status: str
 
+class DistributionDetails(BaseModel):
+    project_id: str
+    profit: float
+    raised: float
+
 
 
 
