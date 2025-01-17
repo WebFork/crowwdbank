@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from routers.basemodels import StartUpDetails, DistributionDetails
+from routers.basemodels import StartUpDetails, DistributionDetails, ExitDetails
 from database import project_collection, transaction_collection, owner_collection
 from routers.helpers import calculate_investment_details
 
@@ -55,6 +55,30 @@ async def distribute_funds(details: DistributionDetails):
         print("Error:", e)
         return {"success": False, "message": "Failed to distribute funds"}
     
+@router.post("/withdraw")
+async def withdraw_funds(details: ExitDetails):
+    try:
+        # Log the incoming request payload
+        print("Incoming payload:", details.model_dump())
+
+        # Process the data
+        exit_data = details.model_dump()
+        ext_id = exit_data["ext_id"]
+        project_id = exit_data["project_id"]
+
+        # Find and delete the matching transaction
+        result = transaction_collection.delete_one({"ext_id": ext_id, "project_id": project_id})
+        
+        if result.deleted_count > 0:
+            return {"success": True, "message": "Funds withdrawn successfully."}
+        else:
+            return {"success": False, "message": "No matching transaction found."}
+
+    except Exception as e:
+        # Log the error
+        print("Error:", e)
+        return {"success": False, "message": "Failed to withdraw funds"}
+
 
     
 

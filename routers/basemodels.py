@@ -58,6 +58,10 @@ class DistributionDetails(BaseModel):
     project_id: str
     profit: float
 
+class ExitDetails(BaseModel):
+    ext_id: str
+    project_id: str
+
 
 
 
