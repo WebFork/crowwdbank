@@ -66,18 +66,33 @@ async def withdraw_funds(details: ExitDetails):
         ext_id = exit_data["ext_id"]
         project_id = exit_data["project_id"]
 
-        # Find and delete the matching transaction
-        result = transaction_collection.delete_one({"ext_id": ext_id, "project_id": project_id})
-        
-        if result.deleted_count > 0:
-            return {"success": True, "message": "Funds withdrawn successfully."}
-        else:
-            return {"success": False, "message": "No matching transaction found."}
+        # Remove all transactions matching ext_id and project_id
+        delete_result = transaction_collection.delete_many({"ext_id": ext_id, "project_id": project_id})
+        print(f"Deleted {delete_result.deleted_count} transactions")
+
+        # Retrieve user details
+        user_details = owner_collection.find_one({"ext_id": ext_id})
+        if user_details:
+
+
+            
+            user_details.pop('_id', None)  # Remove _id field if it exists
+
+        # Retrieve remaining transactions for the user
+        remaining_transactions = list(transaction_collection.find({"ext_id": ext_id}))
+        for transaction in remaining_transactions:
+            transaction.pop('_id', None)  # Remove _id field if it exists
+
+        return {
+            "user_details": user_details,
+            "remaining_transactions": remaining_transactions
+        }
 
     except Exception as e:
         # Log the error
         print("Error:", e)
-        return {"success": False, "message": "Failed to withdraw funds"}
+        return {"error": str(e), "message": "Failed to withdraw funds"}
+
 
 
     
