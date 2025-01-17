@@ -19,6 +19,7 @@ async def get_respond(data:RAGDetails):
     database_name="Crowwd",
     collection_name="chat_collection"
     )
-    return {"response":get_response(data.prompt, chat_history, data.knowledge_base)}
+    knowlege_base = "The start up idea is "+ data.knowledge_base 
+    return {"response":get_response(data.prompt, chat_history, knowlege_base)}
 
 
