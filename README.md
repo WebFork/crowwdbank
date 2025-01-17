@@ -1,4 +1,4 @@
-# crowwdbank# CrowwdBank
+# CrowwdBank
 
 **Seed Funding Simplified: Empowering Common People to Invest in Startups.**
 
